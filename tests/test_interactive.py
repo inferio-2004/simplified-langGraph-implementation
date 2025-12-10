@@ -12,16 +12,15 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from app.core.workflow_engine import WorkflowEngine
 from app.core.tools import tool_registry
-from app.workflows.summarization import create_summarization_workflow
 from app.workflows.llm_summarization import create_llm_summarization_workflow
 from app.storage.sqlite_store import SQLiteStorage
 
 
 async def interactive_test():
-    """Interactive workflow testing with user input"""
-    print("🤖 Interactive Workflow Test")
+    """Interactive LLM workflow testing with user input"""
+    print("🤖 Interactive LLM Workflow Test")
     print("=" * 50)
-    print("Choose between rule-based and LLM-powered summarization\n")
+    print("LLM-powered intelligent summarization with Groq\n")
     
     # Initialize components
     project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -32,21 +31,17 @@ async def interactive_test():
     
     while True:
         print("\n" + "="*50)
-        print("📋 WORKFLOW OPTIONS:")
-        print("1. Rule-based Summarization (fast, deterministic)")
-        print("2. LLM-Powered Summarization (intelligent, context-aware) 🤖")
-        print("3. Exit")
+        print("🤖 LLM WORKFLOW OPTIONS:")
+        print("1. Run LLM-Powered Summarization (intelligent, context-aware)")
+        print("2. Exit")
         
         # Choose workflow
-        workflow_choice = input("\nChoose workflow (1/2/3): ").strip()
+        workflow_choice = input("\nChoose option (1/2): ").strip()
         
-        if workflow_choice == "3":
+        if workflow_choice == "2":
             print("👋 Goodbye!")
             break
         elif workflow_choice == "1":
-            workflow = create_summarization_workflow()
-            workflow_name = "Rule-based Summarization"
-        elif workflow_choice == "2":
             workflow = create_llm_summarization_workflow()
             workflow_name = "LLM-Powered Summarization 🤖"
         else:

@@ -13,8 +13,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from app.core.workflow_engine import WorkflowEngine
 from app.core.tools import tool_registry
-from app.workflows.summarization import create_summarization_workflow, create_sample_summarization_run
-from app.workflows.llm_summarization import create_llm_summarization_workflow
+from app.workflows.llm_summarization import create_llm_summarization_workflow, create_sample_llm_summarization_run
 from app.storage.sqlite_store import SQLiteStorage
 
 
@@ -37,8 +36,8 @@ async def test_workflow_engine():
     print(f"✅ Created graph with ID: {graph_id}")
     
     # Test 2: Run workflow
-    print("\n⚡ Test 2: Running workflow with sample data...")
-    sample_data = create_sample_summarization_run()
+    print("\n⚡ Test 2: Running LLM workflow with sample data...")
+    sample_data = create_sample_llm_summarization_run()
     print(f"📝 Input text length: {len(sample_data['input_text'])} characters")
     print(f"🎯 Target summary length: {sample_data['target_length']} characters")
     
